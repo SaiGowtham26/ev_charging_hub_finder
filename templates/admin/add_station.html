@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">  
+  <link rel="stylesheet" href="../static/admin/Manage-station.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel=" icon" href="../static/pic/charge.png"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage station</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+     
+    <!-- <link rel="stylesheet" href="user-login dashboard.js"> -->
+</head>
+
+<!-- HEADER SECTION -->
+
+
+<body>
+  <header style="padding-top: 10px;padding-bottom: 10px;padding-left: 20px;">
+    <a href="{{ url_for('home') }}" class="logo"> <img src="../static/pic/logo.png" alt="logo"> </a>
+    <nav style="display: inline;">
+    <span class="name_user" style="text-align: right;padding-left: 80%;"><img src="../static/pic/usersiconnew.png" alt="#"/>{{username}}</span></a>
+    </nav>
+  </header>
+<!-- BODY SECTION -->
+
+<div class="d-flex toggled" id="wrapper">
+
+<!-- Sidebar -->
+<div class="border-right" id="sidebar-wrapper" style="background-color: #39c2d4;">
+  <div class="text-right">
+    <button class="sidebar-toggler" id="sidebar-toggle-onSidebar">
+      <span class="icon-bar top-bar"></span>
+      <span class="icon-bar middle-bar"></span>
+   
+    </button>
+  </div>
+
+  <!-- <div class="sidebar-heading">Start Bootstrap </div> -->
+  <div class="list-group list-group-flush" style="background-color: #39c2d4;"> 
+    <a style="background-color: #39c2d4;color: black;" href="/admin-home" class="list-group-item list-group-item-action ">Dashboard</a>
+    <a style="background-color: #39c2d4;color: black;" href="/user-list" class="list-group-item list-group-item-action ">Manage users</a>
+    <a style="background-color: #39c2d4;color: black;" href="/addstationpage" class="list-group-item list-group-item-action ">Add EV Station</a>
+    <a style="background-color: #39c2d4;color: black;" href="/Manage_station" class="list-group-item list-group-item-action ">Manage Station</a>
+    <a style="background-color: #39c2d4;color: black;" href="/view_booking" class="list-group-item list-group-item-action ">view booking</a>
+    <a style="background-color: #39c2d4;color: black;" href="/view_feedback" class="list-group-item list-group-item-action ">view feedback</a>
+    <a style="background-color: #39c2d4;color: black;" href="/logout" class="list-group-item list-group-item-action ">logout</a>
+
+   
+    
+  </div>
+</div>
+<div id="sidebar-empty-space" class="empty-space-sidebar"></div>
+<!-- /#sidebar-wrapper -->
+
+<!-- Page Content -->
+<div id="page-content-wrapper">
+
+  <nav class="navbar navbar-light scroll scrolling-navbar py-2">
+    <!-- <button class="sidebar-toggler" id="sidebar-toggle-onNavbar"> -->
+      <!-- <span class="icon-bar top-bar"></span> -->
+      <!-- <span class="icon-bar middle-bar"></span> -->
+      <!-- <span class="icon-bar bottom-bar"></span> -->
+    </button>
+
+    <!-- <div class="container scroll d-flex flex-row justify-content-center px-0">
+      <a class="nav-link nav-link-secondary" href="https://www.schermabergamo.it/prossime-gare/">Prossime gare
+        <div class="navbar-underline"></div></a>
+      <a class="nav-link nav-link-secondary" href="https://www.schermabergamo.it/calendari-gare/">Calendari gare
+        <div class="navbar-underline"></div></a>
+      <a class="nav-link nav-link-secondary" href="https://www.adfencing.it/schermabergamo/login.php" target="_blank" rel="author noopener">Gestionale
+        <div class="navbar-underline"></div></a>
+    </div>
+-->
+  </nav>
+
+<!-- services section start -->
+<div class="services_section layout_padding" style="padding-top: 50px;" >
+  <div class="container">
+  
+    <section class="ftco-section">
+      <div class="container" style="background-image: url(../static/images/waiting.jpg);" style="padding-top: 30px;">
+        <div class="row justify-content-center">
+          <h1> Add Charging Station</h1>
+        </div>
+        <h3 style="padding-left:150px;padding-top:20px;"><span> {{successmsg}} </span></h3>
+        <div class="row justify-content-center" >
+          <div class="col-lg-10">
+            <div class="wrapper img" style="background-image: url(images/img.jpg);">
+              <div class="row">
+                <div class="col-md-12 col-lg-10">
+                  <div class="contact-wrap p-md-5 p-4">
+                    <form action="{{ url_for('addchargingstation') }}" method="POST" enctype="multipart/form-data" id="contactForm" name="contactForm" class="contactForm">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label class="label" for="stationname">STATION NAME</label>
+                            <input type="text" class="form-control" name="stationname" id="stationname" placeholder="STATION NAME" required>
+                          </div>
+                        </div>
+                        <div class="col-md-6"> 
+                          <div class="form-group">
+                            <label class="label" for="address"> ADDRESS </label>
+                            <input type="text" class="form-control" name="address" id="address" placeholder="ADDRESS" required>
+                          </div>
+                        </div>
+                        
+                        <div class="col-md-6"> 
+                          <div class="form-group">
+                            <label for="city"> CITY </label>
+                            <select class="form-control" id="city" name="city" placeholder="CITY" required>
+                              <option value="">--Select a City--</option>
+                              <option value="thiruvananthapuram">Thiruvananthapuram</option>
+                              <option value="Kollam">Kollam</option>
+                              <option value="Pathanamthitta">Pathanamthitta</option>
+                              <option value="Alapuzha">Alapuzha</option>
+                              <option value="Kottayam">Kottayam</option>
+                              <option value="Idukki">Idukki</option>
+                              <option value="Ernakulam">Ernakulam</option>
+                              <option value="Thrissur">Thrissur</option>
+                              <option value="Palakkad">Palakkad</option>
+                              <option value="Malappuram">Malappuram</option>
+                              <option value="Kozhikode">Kozhikode</option>
+                              <option value="Wayanad">Wayanad</option>
+                              <option value="kannur">Kannur</option>
+                              <option value="Kasaragod">Kasaragod</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        
+
+                        <div class="col-md-6"> 
+                          <div class="form-group">
+                            <label class="label" for="chargetype"> CHARGE TYPE </label>
+                            <select class="form-control" name="chargetype" id="chargetype" placeholder="CHARGE TYPE">
+                              <option value="">--Select--</option>
+                              <option value="AC Level 1 Charging">AC Level 1 Charging</option>
+                              <option value="AC Level 2 Charging">AC Level 2 Charging</option>
+                              <option value="DC Fast Charging">DC Fast Charging</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6"> 
+                          <div class="form-group">
+                            <label class="label" for="ports"> TOTAL AVAILABLE PORTS </label>
+                            <input type="number" class="form-control" name="ports" id="ports" placeholder="AVAILABLE PORTS" required>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6"> 
+                          <div class="form-group">
+                            <label class="label" for="ports"> ADD STATION IMAGE </label>
+                            <input type="file" id="myFile" name="file" accept=".jpg" required>
+                          </div>
+                        </div>
+
+
+                        <div class="col-md-12" style="padding-top: 20px;">
+                          <div class="form-group">
+                            <input type="submit" value="Submit" class="btn btn-success" style="background-color: #39c2d4;border-color: #39c2d4;width:150px;">
+                            <div class="submitting"></div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </form>
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+   
+    
+  </div>
+</div>
+<!-- services section end -->
+
+
+</body>
+
+</html>

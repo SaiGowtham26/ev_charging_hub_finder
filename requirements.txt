@@ -1,0 +1,14 @@
+blinker
+click
+colorama
+Flask
+itsdangerous
+Jinja2
+MarkupSafe
+mysql-connector-python
+protobuf
+random2
+Werkzeug
+pillow
+boto3
+evchargingfinderlib
